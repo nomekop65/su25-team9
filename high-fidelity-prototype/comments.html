@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <title>Customers | Eve Online Marketplace</title>
+    <title>Buyer Comments | Eve Online Marketplace</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
     <script src="assets/js/color-modes.js"></script>
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -120,8 +120,8 @@
                                     Products
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                            <li onclick="location.href='Customers.html'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
                                     <svg class="bi" aria-hidden="true"><use xlink:href="#people"></use></svg>
                                     Customers
                                 </a>
@@ -138,63 +138,15 @@
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Customers</h1>
+                    <h1 class="h2">Buyer Comments</h1>
                 </div>
-                <!-- Customer Grid -->
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Alex Mercer</h5>
-                                <p class="card-text">Frequent Buyer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Sarah Kerrigan</h5>
-                                <p class="card-text">First-time Buyer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Jim Raynor</h5>
-                                <p class="card-text">Returning Customer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Tali'Zorah</h5>
-                                <p class="card-text">Frequent Buyer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Garrus Vakarian</h5>
-                                <p class="card-text">First-time Buyer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Shepard</h5>
-                                <p class="card-text">Returning Customer</p>
-                                <button onclick="location.href='comments.html'" class="btn btn-outline-primary btn-sm">View Comments</button>
-                            </div>
-                        </div>
+                <!-- Comment Card -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Sarah Kerrigan</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Purchased: Caldari Navy Antimatter Charge</h6>
+                        <p class="card-text">"Fast delivery and the item was exactly as described. Will buy again!"</p>
+                        <button onclick="location.href='Customers.html'" class="btn btn-secondary btn-sm mt-2">Back to Customers</button>
                     </div>
                 </div>
             </main>
