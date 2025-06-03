@@ -11,7 +11,7 @@ public class Order {
     private Long id;
 
     @Column(name = "order_number", nullable = false)
-    private String orderNumber;
+    private long orderNumber;
 
     @ManyToOne
     @JoinColumn(name = "provider_id")
@@ -19,7 +19,7 @@ public class Order {
 
     public Order() {}
 
-    public Order(String orderNumber, Provider provider) {
+    public Order(long orderNumber, Provider provider) {
         this.orderNumber = orderNumber;
         this.provider = provider;
     }
@@ -32,11 +32,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getOrderNumber() {
+    public long getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(String orderNumber) {
+    public void setOrderNumber(long orderNumber) {
         this.orderNumber = orderNumber;
     }
 
