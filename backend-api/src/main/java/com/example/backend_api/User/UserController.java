@@ -78,6 +78,15 @@ public class UserController {
         return reviewRepository.save(review);
     }
 
+
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        return service.getAllUsers().stream()
+                .filter(u -> u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Invalid username or password"));
+    }
+
     @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User provider) {
         return service.updateUser(id, provider);

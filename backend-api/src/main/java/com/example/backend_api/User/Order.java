@@ -10,18 +10,30 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_number", nullable = false)
-    private String orderNumber;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String item_type_id;
+
+    private Long Quantity;
+
+    private float price;
+
+    private boolean buyer;
+
+    private boolean isAvailable;
+
     public Order() {}
 
-    public Order(String orderNumber, User user) {
-        this.orderNumber = orderNumber;
+    public Order(User user, String item_type_id, Long Quantity, float price, boolean buyer, boolean isAvailable) {
         this.user = user;
+        this.item_type_id = item_type_id;
+        this.Quantity = Quantity;
+        this.price = price;
+        this.buyer = buyer;
+        this.isAvailable = isAvailable;
     }
 
     public Long getId() {
@@ -32,12 +44,12 @@ public class Order {
         this.id = id;
     }
 
-    public String getOrderNumber() {
-        return orderNumber;
+    public String getitem_type_id() {
+        return item_type_id;
     }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setitem_type_id(String item_type_id) {
+        this.item_type_id = item_type_id;
     }
 
     public User getUser() {
@@ -47,4 +59,38 @@ public class Order {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Long getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        Quantity = quantity;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+
+    }
+
+    public boolean isBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(boolean buyer) {
+        this.buyer = buyer;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
 }

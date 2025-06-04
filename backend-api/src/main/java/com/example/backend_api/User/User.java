@@ -18,6 +18,8 @@ public class User {
 
     private String username;
 
+    private String password;
+
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Review> providerReviews = new ArrayList<>();
@@ -32,9 +34,10 @@ public class User {
 
     public User() {}
 
-    public User(String email, String username) {
+    public User(String email, String username, String password) {
         this.email = email;
         this.username = username;
+        this.password = password;
     }
 
     public void addReview(Review review) {
@@ -76,6 +79,14 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }    
 
     public List<Review> getProviderReviews() {
         return providerReviews;
