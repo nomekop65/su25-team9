@@ -1,4 +1,4 @@
-package com.example.backend_api.Provider;
+package com.example.backend_api.User;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,11 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "provider_id")
-    private Provider provider;
+    private User provider;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private User customer;
 
     public Review() {}
 
@@ -33,11 +37,24 @@ public class Review {
         this.comment = comment;
     }
 
-    public Provider getProvider() {
+    public User getProvider() {
         return provider;
     }
 
-    public void setProvider(Provider provider) {
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setProvider(User provider) {
         this.provider = provider;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+    
+    public void setCustomerandProvider(User customer, User provider) {
+        this.provider = provider;
+        this.customer = customer;
     }
 }

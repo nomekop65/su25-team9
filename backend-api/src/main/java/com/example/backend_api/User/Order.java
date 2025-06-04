@@ -1,4 +1,4 @@
-package com.example.backend_api.Provider;
+package com.example.backend_api.User;
 
 import jakarta.persistence.*;
 
@@ -14,14 +14,14 @@ public class Order {
     private String orderNumber;
 
     @ManyToOne
-    @JoinColumn(name = "provider_id")
-    private Provider provider;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Order() {}
 
-    public Order(String orderNumber, Provider provider) {
+    public Order(String orderNumber, User user) {
         this.orderNumber = orderNumber;
-        this.provider = provider;
+        this.user = user;
     }
 
     public Long getId() {
@@ -40,11 +40,11 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public Provider getProvider() {
-        return provider;
+    public User getUser() {
+        return user;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

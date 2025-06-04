@@ -1,8 +1,8 @@
-package com.example.backend_api.Provider;
+package com.example.backend_api.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProviderRepository extends JpaRepository<Provider, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
