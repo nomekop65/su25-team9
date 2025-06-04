@@ -1,11 +1,11 @@
-package com.example.backend_api.Provider;
+package com.example.backend_api.User;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Provider {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,36 +16,39 @@ public class Provider {
     private String username;
 
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews = new ArrayList<>();
+    private List<Review> providerReviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> customerReviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orderIds = new ArrayList<>();
 
-    public Provider() {}
+    public User() {}
 
-    public Provider(String email, String username) {
+    public User(String email, String username) {
         this.email = email;
         this.username = username;
     }
 
     public void addReview(Review review) {
-        reviews.add(review);
+        providerReviews.add(review);
         review.setProvider(this);
     }
 
     public void removeReview(Review review) {
-        reviews.remove(review);
+        providerReviews.remove(review);
         review.setProvider(null);
     }
 
     public void addOrder(Order order) {
         orderIds.add(order);
-        order.setProvider(this);
+        order.setUser(this);
     }
 
     public void removeOrder(Order order) {
         orderIds.remove(order);
-        order.setProvider(null);
+        order.setUser(null);
     }
 
     public Long getId() {
@@ -69,11 +72,11 @@ public class Provider {
     }
 
     public List<Review> getReviews() {
-        return reviews;
+        return providerReviews;
     }
 
     public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+        this.providerReviews = reviews;
         for (Review r : reviews) {
             r.setProvider(this);
         }
@@ -86,7 +89,7 @@ public class Provider {
     public void setOrderIds(List<Order> orderIds) {
         this.orderIds = orderIds;
         for (Order o : orderIds) {
-            o.setProvider(this);
+            o.setUser(this);
         }
     }
 }
