@@ -11,11 +11,14 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @Autowired
+    private ReviewRepository reviewRepository;
+
     @PostMapping
     public User createUser(@RequestBody User user) {
 
-        if (user.getReviews() != null) {
-            for (Review r : user.getReviews()) {
+        if (user.getProviderReviews() != null) {
+            for (Review r : user.getProviderReviews()) {
                 r.setProvider(user);
             }
         }
@@ -66,13 +69,13 @@ public class UserController {
         user.getOrderIds().add(order);
         return service.updateUser(id, user);
     }
-    @PostMapping("/reviews/[customerId={customerId}]/[providerId={providerId}]")
-    public User addReviewToUser(@PathVariable Long customerId, @PathVariable Long providerId, @RequestBody Review review) {
+    @PostMapping("/reviews/{customerId}/{providerId}")
+    public Review addReviewToUser(@PathVariable Long customerId, @PathVariable Long providerId, @RequestBody Review review) {
         User customer = service.getUserById(customerId);
         User provider = service.getUserById(providerId);
         review.setCustomerandProvider(customer, provider);
-        provider.getReviews().add(review);
-        return service.updateUser(providerId, provider);
+        provider.getProviderReviews().add(review);
+        return reviewRepository.save(review);
     }
 
     @PutMapping("/{id}")

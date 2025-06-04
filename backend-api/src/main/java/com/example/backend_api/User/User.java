@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -76,8 +77,12 @@ public class User {
         this.username = username;
     }
 
-    public List<Review> getReviews() {
+    public List<Review> getProviderReviews() {
         return providerReviews;
+    }
+
+    public List<Review> getCustomerReviews() {
+        return customerReviews;
     }
 
     public void setReviews(List<Review> reviews) {
@@ -86,6 +91,14 @@ public class User {
             r.setProvider(this);
         }
     }
+
+    public void setCustomerReviews(List<Review> reviews) {
+        this.providerReviews = reviews;
+        for (Review r : reviews) {
+            r.setCustomer(this);
+        }
+    }
+
 
     public List<Order> getOrderIds() {
         return orderIds;

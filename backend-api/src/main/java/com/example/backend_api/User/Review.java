@@ -1,5 +1,7 @@
 package com.example.backend_api.User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "provider_id")
+    @JsonIgnore
     private User provider;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private User customer;
 
     public Review() {}

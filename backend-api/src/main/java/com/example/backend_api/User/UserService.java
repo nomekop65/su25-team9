@@ -20,7 +20,8 @@ public class UserService {
 
         existing.setEmail(updated.getEmail());
         existing.setUsername(updated.getUsername());
-        existing.setReviews(updated.getReviews());
+        existing.setReviews(updated.getProviderReviews());
+        existing.setCustomerReviews(updated.getCustomerReviews());
         existing.setOrderIds(updated.getOrderIds());
 
         return repo.save(existing);
@@ -31,7 +32,7 @@ public class UserService {
     }
 
     public List<String>getreviewByusername(String username) {
-        return repo.findByUsername(username).getReviews().stream()
+        return repo.findByUsername(username).getProviderReviews().stream()
                 .map(review -> review.getComment())
                 .toList();
     }
