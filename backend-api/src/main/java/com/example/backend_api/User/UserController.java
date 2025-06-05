@@ -14,6 +14,9 @@ public class UserController {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     @PostMapping
     public User createUser(@RequestBody User user) {
 
@@ -37,12 +40,12 @@ public class UserController {
         return service.getAllUsers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public User getUserById(@PathVariable Long id) {
         return service.getUserById(id);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public User getUserByUsername(@PathVariable String username) {
         return service.getAllUsers().stream()
                 .filter(user -> user.getUsername().equals(username))
@@ -63,11 +66,10 @@ public class UserController {
     }
 
     @PostMapping("/orders/{id}")
-    public User addOrderToUser(@PathVariable Long id, @RequestBody Order order) {
+    public Order addOrderToUser(@PathVariable Long id, @RequestBody Order order) {
         User user = service.getUserById(id);
         order.setUser(user);
-        user.getOrderIds().add(order);
-        return service.updateUser(id, user);
+        return orderRepository.save(order);
     }
     @PostMapping("/reviews/{customerId}/{providerId}")
     public Review addReviewToUser(@PathVariable Long customerId, @PathVariable Long providerId, @RequestBody Review review) {
@@ -82,9 +84,9 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User user) {
         return service.getAllUsers().stream()
-                .filter(u -> u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword()))
+                .filter(u -> u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword()))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Invalid username or password"));
+                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
     }
 
     @PutMapping("/{id}")

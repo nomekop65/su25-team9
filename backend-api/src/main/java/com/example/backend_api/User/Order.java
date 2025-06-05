@@ -15,9 +15,9 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private String item_type_id;
+    private int item_type_id;
 
-    private Long Quantity;
+    private Long quantity;
 
     private float price;
 
@@ -27,10 +27,9 @@ public class Order {
 
     public Order() {}
 
-    public Order(User user, String item_type_id, Long Quantity, float price, boolean buyer, boolean isAvailable) {
-        this.user = user;
+    public Order(int item_type_id, Long quantity, float price, boolean buyer, boolean isAvailable) {
         this.item_type_id = item_type_id;
-        this.Quantity = Quantity;
+        this.quantity = quantity;
         this.price = price;
         this.buyer = buyer;
         this.isAvailable = isAvailable;
@@ -44,11 +43,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getitem_type_id() {
+    public int getitem_type_id() {
         return item_type_id;
     }
 
-    public void setitem_type_id(String item_type_id) {
+    public void setitem_type_id(int item_type_id) {
         this.item_type_id = item_type_id;
     }
 
@@ -61,11 +60,11 @@ public class Order {
     }
 
     public Long getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(Long quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 
     public float getPrice() {
