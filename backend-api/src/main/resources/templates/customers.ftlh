@@ -1,15 +1,15 @@
+<!-- filepath: src/main/resources/templates/customers.ftl -->
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
-
 <head>
-    <title>Eve Online Marketplace Dashboard</title>
+    <title>Customers | Eve Online Marketplace</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
     <script src="assets/js/color-modes.js"></script>
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dashboard.css" rel="stylesheet"> <!-- Add this line to link dashboard.css -->
+    <link href="dashboard.css" rel="stylesheet">
 </head>
-
-<body> <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
                 d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
@@ -189,69 +189,35 @@
                 </div>
             </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Customers</h1>
                 </div>
-                <h2>Recently Sold</h2>
-                <div class="table-responsive small">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Price per Item</th>
-                                <th scope="col">Total cost</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                                <td>1,001</td>
-                                <td><img src="https://images.evetech.net/types/34/icon?size=64"></td>
-                                <td>Tritanium</td>
-                                <td>5000</td>
-                                <td>4.25</td>
-                                <td>21250</td>
-                            </tr>
-                            <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                                <td>1,002</td>
-                                <td><img src="https://images.evetech.net/types/35/icon?size=64"></td>
-                                <td>Pyerite</td>
-                                <td>250000</td>
-                                <td>30.5</td>
-                                <td>7625000</td>
-                            </tr>
-                            <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                                <td>1,003</td>
-                                <td><img src="https://images.evetech.net/types/32880/icon?size=64"></td>
-                                <td>Venture</td>
-                                <td>1</td>
-                                <td>492700</td>
-                                <td>492700</td>
-                            </tr>
-                            <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                                <td>1,004</td>
-                                <td><img src="https://images.evetech.net/types/222/icon?size=64"></td>
-                                <td>Antimatter Charge S</td>
-                                <td>500000</td>
-                                <td>60</td>
-                                <td>30000000</td>
-                            </tr>
-                            <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                                <td>1,005</td>
-                                <td><img src="https://images.evetech.net/types/3237/icon?size=64"></td>
-                                <td>Inherent Implants 'Squire' Capacitor Management EM-802</td>
-                                <td>250000</td>
-                                <td>30.5</td>
-                                <td>7625000</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                <!-- Customer Grid -->
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <#list customers as customer>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${customer.username}</h5>
+                                    <p class="card-text">${customer.description!''}</p>
+                                    <button 
+                                        onclick="window.location.href='/comments/add/${customer.id}/${providerId}'" 
+                                        class="btn btn-outline-primary btn-sm">
+                                        Add Comment
+                                    </button>
+                                    <button 
+                                        onclick="window.location.href='/comments/view/${customer.id}'" 
+                                        class="btn btn-outline-secondary btn-sm">
+                                        View Comments
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </#list>
                 </div>
-                <script src="assets/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-                    class="astro-vvvwv3sm"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"></script>
+            </main>
+        </div>
+    </div>
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
