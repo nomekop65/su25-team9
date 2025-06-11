@@ -130,7 +130,7 @@
         <div id="navbarSearch" class="navbar-search w-100 collapse">
             <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
         </div>
-        <button onclick="location.href='index.html'" class="btn btn-outline-light btn-sm ms-auto me-3" type="button"
+        <button onclick="location.href='/index'" class="btn btn-outline-light btn-sm ms-auto me-3" type="button"
             style="height:32px;">
             <svg class="bi" aria-hidden="true" width="16" height="16">
                 <use xlink:href="#door-closed"></use>
