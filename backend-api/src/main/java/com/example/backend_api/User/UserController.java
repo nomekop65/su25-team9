@@ -1,10 +1,14 @@
 package com.example.backend_api.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
+
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
@@ -98,4 +102,5 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
     }
+    
 }
