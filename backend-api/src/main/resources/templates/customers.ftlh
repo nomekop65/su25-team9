@@ -201,7 +201,7 @@
                                     <h5 class="card-title">${customer.username}</h5>
                                     <p class="card-text">${customer.description!''}</p>
                                     <button 
-                                        onclick="window.location.href='/comments/add/${customer.id}/${providerId}'" 
+                                        onclick="window.location.href='/comments/add/${customer.id}'" 
                                         class="btn btn-outline-primary btn-sm">
                                         Add Comment
                                     </button>
