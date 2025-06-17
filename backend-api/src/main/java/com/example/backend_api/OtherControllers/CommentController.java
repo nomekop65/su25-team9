@@ -29,16 +29,23 @@ public class CommentController {
 
     // Handle Add Comment Submission
     @PostMapping("/add")
-    public String addComment(@RequestParam Long customerId,
-                             @RequestParam Long providerId,
-                             @ModelAttribute Review review) {
-        User customer = userRepository.findById(customerId).orElseThrow();
-        User provider = userRepository.findById(providerId).orElseThrow();
+public String addComment(@RequestParam Long customerId,
+                         @RequestParam Long providerId,
+                         @ModelAttribute Review review) {
+    try {
+        User customer = userRepository.findById(customerId).orElseThrow(() -> new RuntimeException("Customer not found"));
+        User provider = userRepository.findById(providerId).orElseThrow(() -> new RuntimeException("Provider not found"));
         review.setCustomer(customer);
         review.setProvider(provider);
         reviewRepository.save(review);
-        return "redirect:/customers";
+    } catch (Exception e) {
+        e.printStackTrace();
+        // Optionally add a model attribute with error message to display in UI
+        return "error_page"; // Create a simple error_page.ftlh to show error nicely
     }
+    return "redirect:/customers";
+}
+
 
     // View Comments for a Customer
     @GetMapping("/view/{customerId}")
