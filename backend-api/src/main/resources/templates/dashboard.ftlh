@@ -156,14 +156,14 @@
                                     </svg>
                                     Dashboard
                                 </a> </li>
-                            <li onclick="location.href='Orders.html'" class="nav-item"> <a
+                            <li onclick="location.href='/orders'" class="nav-item"> <a
                                     class="nav-link d-flex align-items-center gap-2" href="#"> <svg class="bi"
                                         aria-hidden="true">
                                         <use xlink:href="#file-earmark"></use>
                                     </svg>
                                     Orders
                                 </a> </li>
-                            <li onclick="location.href='Products.html'" class="nav-item"> <a
+                            <li onclick="location.href='/Products'" class="nav-item"> <a
                                     class="nav-link d-flex align-items-center gap-2" href="#"> <svg class="bi"
                                         aria-hidden="true">
                                         <use xlink:href="#cart"></use>
@@ -177,7 +177,7 @@
                                     </svg>
                                     Customers
                                 </a> </li>
-                            <li onclick="location.href='Reports.html'" class="nav-item"> <a
+                            <li onclick="location.href='/Reports'" class="nav-item"> <a
                                     class="nav-link d-flex align-items-center gap-2" href="#"> <svg class="bi"
                                         aria-hidden="true">
                                         <use xlink:href="#graph-up"></use>

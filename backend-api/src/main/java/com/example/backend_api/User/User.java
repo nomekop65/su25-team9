@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.backend_api.Order.Order;
+import com.example.backend_api.Review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

@@ -1,4 +1,6 @@
-package com.example.backend_api.User;
+package com.example.backend_api.Order;
+
+import com.example.backend_api.User.User;
 
 import jakarta.persistence.*;
 

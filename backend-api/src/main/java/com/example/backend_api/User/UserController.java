@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.backend_api.Order.Order;
+import com.example.backend_api.Order.OrderRepository;
+import com.example.backend_api.Review.Review;
+import com.example.backend_api.Review.ReviewRepository;
+
 
 @Controller
 @RequestMapping("/users")

@@ -1,5 +1,6 @@
-package com.example.backend_api.User;
+package com.example.backend_api.Review;
 
+import com.example.backend_api.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package com.example.backend_api.User;
+package com.example.backend_api.Order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

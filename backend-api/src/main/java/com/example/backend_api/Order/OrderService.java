@@ -1,4 +1,4 @@
-package com.example.backend_api.User;
+package com.example.backend_api.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

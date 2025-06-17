@@ -1,8 +1,11 @@
-package com.example.backend_api.User;
+package com.example.backend_api.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+
+
 import java.util.List;
 
 @Controller
@@ -39,5 +42,9 @@ public class OrderController {
     @PutMapping("/availability/{id}")
     public void isAvailable(@PathVariable Long id, @RequestParam boolean isAvailable) {
         service.isAvailable(id, isAvailable);
+    }
+    @GetMapping("/orders")
+    public String showOrders(Model model) {
+        return "Orders";
     }
 }

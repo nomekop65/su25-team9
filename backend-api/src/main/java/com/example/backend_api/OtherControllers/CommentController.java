@@ -1,4 +1,4 @@
-package com.example.backend_api.User;
+package com.example.backend_api.OtherControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.backend_api.Review.Review;
+import com.example.backend_api.Review.ReviewRepository;
+import com.example.backend_api.User.User;
+import com.example.backend_api.User.UserRepository;
+import com.example.backend_api.User.UserService;
 
 import java.util.List;
 

@@ -1,9 +1,12 @@
-package com.example.backend_api.User;
+package com.example.backend_api.OtherControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.backend_api.User.User;
+import com.example.backend_api.User.UserService;
 
 import java.util.List;
 
