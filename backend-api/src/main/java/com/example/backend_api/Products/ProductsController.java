@@ -17,12 +17,20 @@ public class ProductsController {
     @GetMapping("/Products")
     public String getProducts(
             @RequestParam(defaultValue = "1") int page,
+            @RequestParam(required = false) String search,
             Model model) {
         int pageSize = 50;
-        Page<Product> productPage = productRepository.findAll(PageRequest.of(page - 1, pageSize));
+        Page<Product> productPage;
+        if (search != null && !search.isEmpty()) {
+            productPage = productRepository
+                .findByNameContainingIgnoreCase(search, PageRequest.of(page - 1, pageSize));
+        } else {
+            productPage = productRepository.findAll(PageRequest.of(page - 1, pageSize));
+        }
         model.addAttribute("products", productPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("search", search);
         return "Products";
     }
 }
