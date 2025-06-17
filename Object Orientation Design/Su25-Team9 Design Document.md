@@ -29,7 +29,7 @@ Eve Online Marketplace is a web application based off the game Eve Online. In th
 
 ## 2. Use Cases
 ### 2.1 Use Case Model
-![Use Case Model](https://github.com/nomekop65/su25-team9/blob/main/project_design_doc/usercasediagram.jpg?raw=true)
+![Use Case Model](https://github.com/nomekop65/su25-team9/blob/main/Object%20Orientation%20Design/usercasediagram.jpg?raw=true)
 
 ### 2.2 Use Case Descriptions
 
@@ -52,6 +52,6 @@ The user has the ability to create and post a reply to another user on the websi
 The user has the ability to view ALL orders on the entire application.
 
 ## 3. UML Class Diagram
-![UML Class Diagram](https://github.com/nomekop65/su25-team9/blob/main/project_design_doc/UML%20Diagram.jpg?raw=true)
+![UML Class Diagram](https://github.com/nomekop65/su25-team9/blob/main/Object%20Orientation%20Design/UML%20Diagram.jpg?raw=true)
 ## 4. Database Schema
-![Database Schema](https://github.com/nomekop65/su25-team9/blob/main/project_design_doc/UPDATEDSCHEMA2.png?raw=true)
+![Database Schema](https://github.com/nomekop65/su25-team9/blob/main/Object%20Orientation%20Design/UPDATEDSCHEMA2.png?raw=true)
