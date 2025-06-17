@@ -62,4 +62,15 @@ public class Review {
         this.provider = provider;
         this.customer = customer;
     }
+    @Column(length = 1000) // optional, to limit reply length
+private String reply;
+
+public String getReply() {
+    return reply;
+}
+
+public void setReply(String reply) {
+    this.reply = reply;
+}
+
 }

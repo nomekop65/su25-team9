@@ -21,12 +21,13 @@ public class SignUpController {
 
     @PostMapping("/signup")
     public String processSignup(@RequestParam String email,
+                                @RequestParam String username,
                                 @RequestParam String password) {
 
         // Create new User with email and password (you can add username later)
         User user = new User();
         user.setEmail(email);
-        user.setUsername(email); // simple default username
+        user.setUsername(username); // simple default username
         user.setPassword(password); // In production, hash this!
 
         userService.createUser(user);
@@ -39,4 +40,26 @@ public class SignUpController {
         // This renders src/main/resources/templates/dashboard.ftlh
         return "dashboard";
     }
+    @GetMapping("/modify_profile")
+public String showModifyProfileForm() {
+    return "modify_profile";
+}
+
+@PostMapping("/modify_profile")
+public String processModifyProfile(@RequestParam String email,
+                                   @RequestParam String currentPassword,
+                                   @RequestParam String newPassword) {
+
+    User user = userService.findByEmail(email);
+    if (user == null || !user.getPassword().equals(currentPassword)) {
+        // optional: redirect with error param
+        return "redirect:/modify_profile?error=true";
+    }
+
+    user.setPassword(newPassword);
+    userService.createUser(user); // reuse createUser to save update
+
+    return "redirect:/dashboard";
+}
+
 }

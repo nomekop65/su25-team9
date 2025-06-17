@@ -45,4 +45,12 @@ public class UserService {
     public List<User> getAllUsers() {
         return repo.findAll();
     }
+    public User findByEmail(String email) {
+    return repo.findByEmail(email);
+}
+public User findByUsername(String username) {
+    return repo.findByUsername(username);
+}
+
+
 }
