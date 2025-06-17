@@ -7,11 +7,14 @@ import org.springframework.ui.Model;
 
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import com.example.backend_api.User.User; // Add this import, adjust the package if needed
 import com.example.backend_api.User.UserRepository; // Add this import, adjust the package if needed
+import com.example.backend_api.Products.ProductRepository; // Add this import, adjust the package if needed
+import com.example.backend_api.Products.Product; // Add this import, adjust the package if needed
 
 @Controller
-@RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private OrderService service;
@@ -21,6 +24,9 @@ public class OrderController {
     
     @Autowired
     private UserRepository UserRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @PostMapping
     public Order createOrder(@RequestBody Order order) {
@@ -53,7 +59,17 @@ public class OrderController {
     }
     @GetMapping("/orders")
     public String showOrders(Model model) {
-        return "Orders";
+        List<Order> orders = orderRepository.findAll();
+
+        // Build a map of item_type_id (as String) to typename
+        Map<String, String> typeNames = new HashMap<>();
+        for (Product product : productRepository.findAll()) {
+            typeNames.put(String.valueOf(product.getId()), product.getName()); // or getTypename()
+        }
+
+        model.addAttribute("orders", orders);
+        model.addAttribute("typeNames", typeNames);
+        return "Orders"; // or "orders" if your template is lowercase
     }
 
     @PostMapping("/create")
@@ -76,6 +92,12 @@ public class OrderController {
         order.setPrice(price);
         order.setAvailable(true); // Assuming new orders are available by default
         orderRepository.save(order);
+        return "redirect:/orders";
+    }
+
+    @PostMapping("/orders/accept")
+    public String acceptOrder(@RequestParam Long orderId) {
+        orderRepository.deleteById(orderId);
         return "redirect:/orders";
     }
 }

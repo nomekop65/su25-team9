@@ -168,118 +168,107 @@
                 <h1 class="h2">Orders</h1>
             </div>
 
-
             <h2>Buy Orders</h2>
-            <div class="table-responsive small">
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">Order Id</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price per Item</th>
-                            <th scope="col">Total cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                            <td>1,001</td>
-                            <td><img src="https://images.evetech.net/types/34/icon?size=64"></td>
-                            <td>Tritanium</td>
-                            <td>5000</td>
-                            <td>4.25</td>
-                            <td>21250</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                            <td>1,002</td>
-                            <td><img src="https://images.evetech.net/types/35/icon?size=64"></td>
-                            <td>Pyerite</td>
-                            <td>250000</td>
-                            <td>30.5</td>
-                            <td>7625000</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                            <td>1,003</td>
-                            <td><img src="https://images.evetech.net/types/32880/icon?size=64"></td>
-                            <td>Venture</td>
-                            <td>1</td>
-                            <td>492700</td>
-                            <td>492700</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                            <td>1,004</td>
-                            <td><img src="https://images.evetech.net/types/222/icon?size=64"></td>
-                            <td>Antimatter Charge S</td>
-                            <td>500000</td>
-                            <td>60</td>
-                            <td>30000000</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails.html'">
-                            <td>1,005</td>
-                            <td><img src="https://images.evetech.net/types/3237/icon?size=64"></td>
-                            <td>Inherent Implants 'Squire' Capacitor Management EM-802</td>
-                            <td>250000</td>
-                            <td>30.5</td>
-                            <td>7625000</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-            <h2>Sell Orders</h2>
-            <div class="table-responsive small">
-                <table class="table table-striped table-sm">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="col">Order Id</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Item</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price per Item</th>
-                        <th scope="col">Total cost</th>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Username</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
                     </tr>
-                    <tbody>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails1.html'">
-                            <td>1,001</td>
-                            <td><img src="https://images.evetech.net/types/34/icon?size=64"></td>
-                            <td>Tritanium</td>
-                            <td>5000</td>
-                            <td>4.25</td>
-                            <td>21250</td>
+                </thead>
+                <tbody>
+                <#list orders as order>
+                    <#if order.buyer?? && order.buyer>
+                        <tr>
+                            <td>
+                                <img src="https://images.evetech.net/types/${order.item_type_id?c}/icon?size=64"
+                                     alt="${typeNames[order.item_type_id?string]!''}">
+                            </td>
+                            <td>${typeNames[order.item_type_id?string]!''}</td>
+                            <td>${order.user.username!''}</td>
+                            <td>${order.quantity}</td>
+                            <td>${order.price}</td>
+                            <td>
+                                <button type="button" class="btn btn-success"
+                                        onclick="showAcceptModal('${order.id?c?js_string}', '${order.user.username!js_string}')">
+                                    Accept
+                                </button>
+                            </td>
                         </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails1.html'">
-                            <td>1,002</td>
-                            <td><img src="https://images.evetech.net/types/35/icon?size=64"></td>
-                            <td>Pyerite</td>
-                            <td>250000</td>
-                            <td>30.5</td>
-                            <td>7625000</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails1.html'">
-                            <td>1,003</td>
-                            <td><img src="https://images.evetech.net/types/32880/icon?size=64"></td>
-                            <td>Venture</td>
-                            <td>1</td>
-                            <td>492700</td>
-                            <td>492700</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails1.html'">
-                            <td>1,004</td>
-                            <td><img src="https://images.evetech.net/types/222/icon?size=64"></td>
-                            <td>Antimatter Charge S</td>
-                            <td>500000</td>
-                            <td>60</td>
-                            <td>30000000</td>
-                        </tr>
-                        <tr style="cursor:pointer;" onclick="window.location.href='OrderDetails1.html'">
-                            <td>1,005</td>
-                            <td><img src="https://images.evetech.net/types/3237/icon?size=64"></td>
-                            <td>Inherent Implants 'Squire' Capacitor Management EM-802</td>
-                            <td>250000</td>
-                            <td>30.5</td>
-                            <td>7625000</td>
-                        </tr>
+                    </#if>
+                </#list>
+                </tbody>
+            </table>
 
-                    </tbody>
-                </table>
-            </div>
+            <h2>Sell Orders</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Username</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <#list orders as order>
+                    <#if order.buyer?? && !order.buyer>
+                        <tr>
+                            <td>
+                                <img src="https://images.evetech.net/types/${order.item_type_id?c}/icon?size=64"
+                                     alt="${typeNames[order.item_type_id?string]!''}">
+                            </td>
+                            <td>${typeNames[order.item_type_id?string]!''}</td>
+                            <td>${order.user.username!''}</td>
+                            <td>${order.quantity}</td>
+                            <td>${order.price}</td>
+                            <td>
+                                <button type="button" class="btn btn-success"
+                                        onclick="showAcceptModal('${order.id?c?js_string}', '${order.user.username!js_string}')">
+                                    Accept
+                                </button>
+                            </td>
+                        </tr>
+                    </#if>
+                </#list>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</div>
+
+<div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="/orders/accept">
+        <div class="modal-header">
+          <h5 class="modal-title" id="acceptModalLabel">Accept Order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="orderId" id="acceptOrderId">
+          <p>Meet <span id="acceptUsername"></span> in game to complete the order.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Accept and Delete Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function showAcceptModal(orderId, username) {
+    document.getElementById('acceptOrderId').value = orderId;
+    document.getElementById('acceptUsername').textContent = username;
+    var modal = new bootstrap.Modal(document.getElementById('acceptModal'));
+    modal.show();
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
