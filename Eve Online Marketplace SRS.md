@@ -39,8 +39,9 @@ Table of Contents
 | Name | Date    | Reason For Changes  | Version   |
 | ---- | ------- | ------------------- | --------- |
 |Siming| 5/25    | Initial SRS         |    1.0    |
-|      |         |                     |           |
-|      |         |                     |           |
+| Trey     |   5/25      |      Initial SRS               |    1.0       |
+|  Siming    |   6/17      |         Completed Project            |     2.0      |
+|  Trey    |   6/17      |         Completed Project            |     2.0      |
 
 ## 1. Introduction
 
