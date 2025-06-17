@@ -164,11 +164,22 @@
                     </div>
                 </div>
             </div>
+
+
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <form method="get" action="/Products" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Search products..."
+                            value="${search!}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Products</h1>
                 </div>
+
 
 
                 <h2>Items</h2>
@@ -182,10 +193,11 @@
                         </thead>
                         <tbody>
                             <#list products as product>
-                                <tr style="cursor:pointer;" onclick="showModal('${product.name}')">
+                                <tr style="cursor:pointer;"
+                                    onclick="showOrderModal('${product.id?c}', '${product.name?js_string}')">
                                     <td>
-                                        <img src="https://images.evetech.net/types/${product.id}/icon?size=64"
-                                            alt="${product.name}">
+                                        <img src="https://images.evetech.net/types/${product.id?c}/icon?size=64"
+                                            alt="${product.name!''}">
                                     </td>
                                     <td>${product.name}</td>
                                 </tr>
@@ -195,48 +207,48 @@
                 </div>
                 <nav>
                     <ul class="pagination">
-                        <#if (currentPage??) && (currentPage?number > 1)>
+                        <#if (currentPage??) && (currentPage?number> 1)>
                             <li class="page-item">
                                 <a class="page-link" href="?page=${currentPage - 1}">Previous</a>
                             </li>
                         </#if>
 
                         <#-- Always show first page -->
-                        <li class="page-item <#if currentPage == 1>active</#if>">
-                            <a class="page-link" href="?page=1">1</a>
-                        </li>
-
-                        <#-- Show ellipsis if needed -->
-                        <#if (currentPage??) && (currentPage?number > 4)>
-                            <li class="page-item disabled"><span class="page-link">...</span></li>
-                        </#if>
-
-                    
-                        <#list (currentPage-2)..(currentPage+2) as i>
-                            <#if (i > 1) && i < totalPages>
-                                <li class="page-item <#if i == currentPage>active</#if>">
-                                    <a class="page-link" href="?page=${i}">${i}</a>
-                                </li>
-                            </#if>
-                        </#list>
-
-                    
-                        <#if currentPage < totalPages - 3>
-                            <li class="page-item disabled"><span class="page-link">...</span></li>
-                        </#if>
-
-
-                        <#if (totalPages > 1)>
-                            <li class="page-item <#if currentPage == totalPages>active</#if>">
-                                <a class="page-link" href="?page=${totalPages}">${totalPages}</a>
+                            <li class="page-item <#if currentPage == 1>active</#if>">
+                                <a class="page-link" href="?page=1">1</a>
                             </li>
-                        </#if>
 
-                        <#if currentPage < totalPages>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=${currentPage + 1}">Next</a>
-                            </li>
-                        </#if>
+                            <#-- Show ellipsis if needed -->
+                                <#if (currentPage??) && (currentPage?number> 4)>
+                                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                                </#if>
+
+
+                                <#list (currentPage-2)..(currentPage+2) as i>
+                                    <#if (i> 1) && i < totalPages>
+                                            <li class="page-item <#if i == currentPage>active</#if>">
+                                                <a class="page-link" href="?page=${i}">${i}</a>
+                                            </li>
+                                    </#if>
+                                </#list>
+
+
+                                <#if currentPage < totalPages - 3>
+                                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                                </#if>
+
+
+                                <#if (totalPages> 1)>
+                                    <li class="page-item <#if currentPage == totalPages>active</#if>">
+                                        <a class="page-link" href="?page=${totalPages}">${totalPages}</a>
+                                    </li>
+                                </#if>
+
+                                <#if currentPage < totalPages>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${currentPage + 1}">Next</a>
+                                    </li>
+                                </#if>
                     </ul>
                 </nav>
 
@@ -245,32 +257,41 @@
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Order</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <span id="modalItemName"></span>
-                                <div class="mb-3">
-                                    <label for="buyerSellerSelect" class="form-label">Are you a buyer or seller?</label>
-                                    <select class="form-select" id="buyerSellerSelect">
-                                        <option value="" selected disabled>Select one</option>
-                                        <option value="buyer">Buyer</option>
-                                        <option value="seller">Seller</option>
-                                    </select>
+                            <form method="post" action="/orders/create">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Order</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <div class="mb-3 mt-3">
-                                    <label for="modalInput1" class="form-label">Quantity:</label>
-                                    <input type="text" class="form-control" id="modalInput1" placeholder="Type here">
+                                <div class="modal-body">
+                                    <input type="hidden" name="productId" id="modalProductId">
+                                    <input type="hidden" name="productName" id="modalProductName">
+                                    <span id="modalItemName"></span>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username:</label>
+                                        <input type="text" class="form-control" id="username" name="username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="buyerSellerSelect" class="form-label">Are you a buyer or seller?</label>
+                                        <select class="form-select" id="buyerSellerSelect" name="role" required>
+                                            <option value="" selected disabled>Select one</option>
+                                            <option value="buyer">Buyer</option>
+                                            <option value="seller">Seller</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="modalInput1" class="form-label">Quantity:</label>
+                                        <input type="number" class="form-control" id="modalInput1" name="quantity"
+                                            min="1" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="modalInput2" class="form-label">Price:</label>
+                                        <input type="number" class="form-control" id="modalInput2" name="price" min="0"
+                                            step="0.01" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="modalButton1">Submit</button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="modalInput2" class="form-label">Price:</label>
-                                    <input type="text" class="form-control" id="modalInput2" placeholder="Type here">
-                                </div>
-                                <button type="button" class="btn btn-primary" id="modalButton1"
-                                    onclick="window.location.href='/orders'">Submit</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -279,6 +300,16 @@
                         document.getElementById('modalItemName').textContent = itemName;
                         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
                         myModal.show();
+                    }
+
+                </script>
+                <script>
+                    function showOrderModal(productId, productName) {
+                        document.getElementById('modalProductId').value = productId;
+                        document.getElementById('modalProductName').value = productName;
+                        document.getElementById('modalItemName').textContent = productName;
+                        var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                        modal.show();
                     }
                 </script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

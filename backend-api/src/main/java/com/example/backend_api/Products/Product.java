@@ -7,11 +7,12 @@ import jakarta.persistence.*;
 public class Product {
     @Id
     private Integer typeid;
-    private String typename;
+    @Column(name = "typename")
+    private String name;
 
     public Integer getId() { return typeid; }
     public void setId(Integer typeid) { this.typeid = typeid; }
 
-    public String getName() { return typename; }
-    public void setName(String typename) { this.typename = typename; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }

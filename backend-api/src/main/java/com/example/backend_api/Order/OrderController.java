@@ -7,12 +7,20 @@ import org.springframework.ui.Model;
 
 
 import java.util.List;
+import com.example.backend_api.User.User; // Add this import, adjust the package if needed
+import com.example.backend_api.User.UserRepository; // Add this import, adjust the package if needed
 
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private OrderService service;
+
+    @Autowired
+    private OrderRepository orderRepository;
+    
+    @Autowired
+    private UserRepository UserRepository;
 
     @PostMapping
     public Order createOrder(@RequestBody Order order) {
@@ -46,5 +54,28 @@ public class OrderController {
     @GetMapping("/orders")
     public String showOrders(Model model) {
         return "Orders";
+    }
+
+    @PostMapping("/create")
+    public String createOrder(@RequestParam Integer productId,
+                              @RequestParam String username,
+                              @RequestParam String role,
+                              @RequestParam Long quantity,
+                              @RequestParam float price) {
+        Order order = new Order();
+        order.setitem_type_id(productId);
+        User user = UserRepository.findByUsername(username);
+        order.setUser(user);
+        System.out.println(role);
+        if ("buyer".equals(role)) {
+            order.setBuyer(true);
+        } else if ("seller".equals(role)) {
+            order.setBuyer(false);
+        }
+        order.setQuantity(quantity);
+        order.setPrice(price);
+        order.setAvailable(true); // Assuming new orders are available by default
+        orderRepository.save(order);
+        return "redirect:/orders";
     }
 }
