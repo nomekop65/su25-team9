@@ -95,103 +95,129 @@
         <!-- ...add any other symbols used in dashboard.html... -->
     </svg>
 
-<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Eve Online Marketplace</a>
-    <ul class="navbar-nav flex-row d-md-none">
-        <li class="nav-item text-nowrap">
-            <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false"
-                aria-label="Toggle search">
-                <svg class="bi" aria-hidden="true">
-                    <use xlink:href="#search"></use>
-                </svg>
-            </button>
-        </li>
-        <li class="nav-item text-nowrap">
-            <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <svg class="bi" aria-hidden="true">
-                    <use xlink:href="#list"></use>
-                </svg>
-            </button>
-        </li>
-    </ul>
-    <div id="navbarSearch" class="navbar-search w-100 collapse">
-        <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-    </div>
-    <button onclick="location.href='/index'" class="btn btn-outline-light btn-sm ms-auto me-3" type="button"
-        style="height:32px;">
-        <svg class="bi" aria-hidden="true" width="16" height="16">
-            <use xlink:href="#door-closed"></use>
-        </svg>
-        Sign out
-    </button>
-</header>
-<div class="container-fluid">
-    <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-                aria-labelledby="sidebarMenuLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="sidebarMenuLabel">Eve Online Marketplace</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                        data-bs-target="#sidebarMenu" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                    <ul class="nav flex-column">
-                        <li onclick="location.href='/dashboard'" class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#house-fill"></use>
-                                </svg>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li onclick="location.href='/orders'" class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#file-earmark"></use>
-                                </svg>
-                                Orders
-                            </a>
-                        </li>
-                        <li onclick="location.href='/Products'" class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#cart"></use>
-                                </svg>
-                                Products
-                            </a>
-                        </li>
-                        <li onclick="location.href='/customers'" class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#people"></use>
-                                </svg>
-                                Customers
-                            </a>
-                        </li>
-                        <li onclick="location.href='/Reports'" class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#graph-up"></use>
-                                </svg>
-                                Reports
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Eve Online Marketplace</a>
+        <ul class="navbar-nav flex-row d-md-none">
+            <li class="nav-item text-nowrap">
+                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false"
+                    aria-label="Toggle search">
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                </button>
+            </li>
+            <li class="nav-item text-nowrap">
+                <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#list"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+        <div id="navbarSearch" class="navbar-search w-100 collapse">
+            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
         </div>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Reports</h1>
+        <button onclick="location.href='/index'" class="btn btn-outline-light btn-sm ms-auto me-3" type="button"
+            style="height:32px;">
+            <svg class="bi" aria-hidden="true" width="16" height="16">
+                <use xlink:href="#door-closed"></use>
+            </svg>
+            Sign out
+        </button>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+                <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+                    aria-labelledby="sidebarMenuLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="sidebarMenuLabel">Eve Online Marketplace</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                        <ul class="nav flex-column">
+                            <li onclick="location.href='/dashboard'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#house-fill"></use>
+                                    </svg>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li onclick="location.href='/orders'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#file-earmark"></use>
+                                    </svg>
+                                    Orders
+                                </a>
+                            </li>
+                            <li onclick="location.href='/Products'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#cart"></use>
+                                    </svg>
+                                    Products
+                                </a>
+                            </li>
+                            <li onclick="location.href='/customers'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#people"></use>
+                                    </svg>
+                                    Customers
+                                </a>
+                            </li>
+                            <li onclick="location.href='/reports'" class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                                    <svg class="bi" aria-hidden="true">
+                                        <use xlink:href="#graph-up"></use>
+                                    </svg>
+                                    Reports
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Reports</h1>
+                </div>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <!-- Reviews section is intentionally left blank to avoid errors -->
-            </div>
-        </main>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <#if reviews?? && reviews?has_content>
+                        <#list reviews as review>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Comment:</h5>
+                                        <p class="card-text">${review.comment}</p>
+
+                                        <#if review.reply?? && review.reply?has_content>
+                                            <div class="alert alert-info mt-2">
+                                                <strong>Reply:</strong> ${review.reply}
+                                            </div>
+                                        </#if>
+
+                                        <button onclick="window.location.href='/reports/reply/${review.id}'"
+                                            class="btn btn-outline-primary btn-sm">
+                                            Reply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </#list>
+
+                        <#else>
+                            <p>No reports found.</p>
+                    </#if>
+                </div>
+            </main>
+        </div>
     </div>
-</div>

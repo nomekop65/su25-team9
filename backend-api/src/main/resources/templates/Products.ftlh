@@ -153,7 +153,7 @@
                                     </svg>
                                     Customers
                                 </a> </li>
-                            <li onclick="location.href='/Reports'" class="nav-item"> <a
+                            <li onclick="location.href='/reports'" class="nav-item"> <a
                                     class="nav-link d-flex align-items-center gap-2" href="#"> <svg class="bi"
                                         aria-hidden="true">
                                         <use xlink:href="#graph-up"></use>
