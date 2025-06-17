@@ -178,39 +178,68 @@
                             <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Item</th>
-                                <th scope="col">Average price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="cursor:pointer;" onclick="showModal()">
-                                <td><img src="https://images.evetech.net/types/34/icon?size=64"></td>
-                                <td>Tritanium</td>
-                                <td>4.25</td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.evetech.net/types/35/icon?size=64"></td>
-                                <td>Pyerite</td>
-                                <td>30.5</td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.evetech.net/types/32880/icon?size=64"></td>
-                                <td>Venture</td>
-                                <td>492700</td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.evetech.net/types/222/icon?size=64"></td>
-                                <td>Antimatter Charge S</td>
-                                <td>60</td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://images.evetech.net/types/3237/icon?size=64"></td>
-                                <td>Inherent Implants 'Squire' Capacitor Management EM-802</td>
-                                <td>30.5</td>
-                            </tr>
-
+                            <#list products as product>
+                                <tr style="cursor:pointer;" onclick="showModal('${product.name}')">
+                                    <td>
+                                        <img src="https://images.evetech.net/types/${product.id}/icon?size=64"
+                                            alt="${product.name}">
+                                    </td>
+                                    <td>${product.name}</td>
+                                </tr>
+                            </#list>
                         </tbody>
                     </table>
                 </div>
+                <nav>
+                    <ul class="pagination">
+                        <#if (currentPage??) && (currentPage?number > 1)>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${currentPage - 1}">Previous</a>
+                            </li>
+                        </#if>
+
+                        <#-- Always show first page -->
+                        <li class="page-item <#if currentPage == 1>active</#if>">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+
+                        <#-- Show ellipsis if needed -->
+                        <#if (currentPage??) && (currentPage?number > 4)>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                        </#if>
+
+                    
+                        <#list (currentPage-2)..(currentPage+2) as i>
+                            <#if (i > 1) && i < totalPages>
+                                <li class="page-item <#if i == currentPage>active</#if>">
+                                    <a class="page-link" href="?page=${i}">${i}</a>
+                                </li>
+                            </#if>
+                        </#list>
+
+                    
+                        <#if currentPage < totalPages - 3>
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                        </#if>
+
+
+                        <#if (totalPages > 1)>
+                            <li class="page-item <#if currentPage == totalPages>active</#if>">
+                                <a class="page-link" href="?page=${totalPages}">${totalPages}</a>
+                            </li>
+                        </#if>
+
+                        <#if currentPage < totalPages>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${currentPage + 1}">Next</a>
+                            </li>
+                        </#if>
+                    </ul>
+                </nav>
+
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -222,7 +251,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Tritanium
+                                <span id="modalItemName"></span>
                                 <div class="mb-3">
                                     <label for="buyerSellerSelect" class="form-label">Are you a buyer or seller?</label>
                                     <select class="form-select" id="buyerSellerSelect">
@@ -240,13 +269,14 @@
                                     <input type="text" class="form-control" id="modalInput2" placeholder="Type here">
                                 </div>
                                 <button type="button" class="btn btn-primary" id="modalButton1"
-                                    onclick="window.location.href='Orders.html'">Submit</button>
+                                    onclick="window.location.href='/orders'">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <script>
-                    function showModal() {
+                    function showModal(itemName) {
+                        document.getElementById('modalItemName').textContent = itemName;
                         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
                         myModal.show();
                     }
