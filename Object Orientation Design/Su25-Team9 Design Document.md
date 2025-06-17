@@ -21,7 +21,8 @@ Table of Contents
 | ---- | ------- | ------------------- | --------- |
 |  Trey L  | 06/04   |Design Doc.      |    1      |
 |   Siming   | 06/04        |  Design Doc.                   |      1     |
-|      |         |                     |           |
+|  Trey L    |    06/17     |     Updated OOD                |     2      |
+|  Siming   |    06/17     |    Updated OOD               |     2      |
 
 ## 1. Product Overview
 Eve Online Marketplace is a web application based off the game Eve Online. In this marketplace a user will sign up and then sign in to have access to the application. From there a user can either buy or sell orders of items from the game. This platform was made to help private buyers and sellers connect in the Eve Online game and make transactions using the in game currency ISK.
@@ -41,8 +42,14 @@ The user must log in to have access to the app at all. We do this to ensure no f
 The user has the ability to modify their profile, mainly a username or other information.
 ##### 2.2.1.4 Create Buy Order
 The user has the ability to buy orders from the application and receive the items in game via trading in game currency for items.
-##### 2.2.1.4 Create Sell Order
+##### 2.2.1.5 Create Sell Order
 The user has the ability to sell orders from the application and receive the asking amount in game via trading the items to the buyer. 
+##### 2.2.1.6 Post a Comment
+The user has the ability to create a comment of another user on the website.
+##### 2.2.1.7 Reply To Comments
+The user has the ability to create and post a reply to another user on the website, and reply to their comment.
+##### 2.2.1.8 View Orders
+The user has the ability to view ALL orders on the entire application.
 
 ## 3. UML Class Diagram
 ![UML Class Diagram](https://github.com/nomekop65/su25-team9/blob/main/project_design_doc/UML%20Diagram.jpg?raw=true)
